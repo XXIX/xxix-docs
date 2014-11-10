@@ -1,0 +1,11 @@
+# Site settings
+title: XXIX Docs
+email: michael@xxix.co
+description: > # this means to ignore newlines until "baseurl:"
+  Awesome docs by XXIX
+baseurl: "" # the subpath of your site, e.g. /blog/
+client: "Client Name" # the base hostname & protocol for your site
+url: "http://clientdomain.com" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown

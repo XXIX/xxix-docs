@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="page-index">
+  <div class="section-head">
+    <div class="article">
+      <div class="head">
+        <h1><span class="client">{{ site.client }}</span><br>Docs</h1>
+        <p class="meta">Documentation for {{ site.url }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-body" id="docs">
+    <div class="head">
+      <div class="article">
+        <p>Documentation Index</p>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="article">
+        <ul class="mod-post-list">
+          {% for post in site.posts reversed %}
+            <li class="post"><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

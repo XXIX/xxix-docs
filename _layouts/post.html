@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    <div class="wrapper">
+      <div class="page-post">
+        <div class="section">
+
+          <div class="head">
+            <div class="article">
+              <a href="/#docs" class="button"><span>Back to Docs</span> &#10141;</a>
+              <p>{{ page.title }}</p>
+            </div>
+          </div>
+
+          <div class="body">
+            <div class="article">
+              {{content}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

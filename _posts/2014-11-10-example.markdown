@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "An Example Post"
+date:   2014-11-10 21:20:00
+---
+Each new posts is a markdown file.
+
+### That's right
+
+You better believe it!

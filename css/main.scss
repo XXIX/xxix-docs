@@ -1,0 +1,287 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+@import
+        "variables",
+        "mixins/background",
+        "mixins/media_query",
+        "mixins/style",
+        "helpers/reset",
+        "helpers/form",
+        "helpers/display",
+        "helpers/grid",
+        "helpers/media",
+        "helpers/space",
+        "helpers/text",
+        "helpers/setup",
+        "syntax-highlighting"
+;
+
+/******************************************************************
+  Base Typography
+******************************************************************/
+
+body {
+  @extend %text-regular, %text-s, %line-s;
+  color: $color-base;
+}
+
+a {
+  color: $color-link;
+}
+
+a:hover {
+  color: $color-link-hover;
+}
+
+a:active, a:focus {
+  outline: 0;
+}
+
+hr {
+  @extend %margin-vertical-xxl;
+  color: $color-line;
+  background: $color-line;
+  border: none;
+  display: block;
+  height: $border-l;
+}
+
+h1 {
+  @extend %text-l, %text-bold;
+  @extend %lap-text-xl;
+  @extend %desk-text-xxl;
+}
+
+h2 {
+  @extend %text-m, %text-bold;
+  @extend %lap-text-l;
+  @extend %desk-text-xl;
+}
+
+h3 {
+  font-size: $text-l;
+  @extend %text-s, %text-bold;
+  @extend %lap-text-m;
+  @extend %desk-text-l;
+}
+
+/******************************************************************
+  Reading Text
+******************************************************************/
+
+%reading-text {
+  @extend %text-regular, %text-s, %line-s;
+
+  a {
+    color: $color-link;
+  }
+
+  a:hover {
+    color: $color-link-hover;
+    text-decoration: underline;
+  }
+
+  a:active, a:focus {
+    outline: 0;
+  }
+
+  hr {
+    @extend %margin-vertical-l;
+    color: $color-line;
+    background: $color-line;
+    border: none;
+    display: block;
+    height: $border-s;
+  }
+
+  h1 {
+    @extend %text-l, %margin-bottom-l, %text-bold;
+    @extend %lap-text-xl;
+    @extend %desk-text-xxl;
+  }
+
+  h2 {
+    @extend %text-m, %margin-bottom-m, %text-bold;
+    @extend %lap-text-l;
+    @extend %desk-text-xl;
+  }
+
+  h3 {
+    @extend %text-s, %margin-bottom-s, %text-bold;
+    @extend %lap-text-m;
+    @extend %desk-text-l;
+  }
+
+  blockquote {
+    border-left: $border-xl solid $color-line;
+    @extend %text-m, %line-m, %padding-left-m;
+  }
+
+  p {
+    @extend %margin-bottom-m;
+  }
+
+  ul, ol {
+    list-style-position: outside;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+}
+
+/******************************************************************
+  Site
+******************************************************************/
+
+html, body {
+  height: 100%;
+}
+
+header {
+  @extend %padding-vertical-l, %margin-bottom-xl, %text-s, %uppercase;
+  color: $xxix-black;
+  background-color: $xxix-yellow;
+
+  a {
+    color: inherit;
+  }
+
+  .button {
+    @extend %text-xs, %padding-all-xxs;
+    border: 1px solid $xxix-gray;
+    color: $xxix-gray;
+    margin-top: -3px;
+    float: right;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    span {
+      @extend %hide;
+      @extend %lap-inline;
+    }
+  }
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -$footer-height;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+}
+
+footer, .wrapper:after {
+  height: $footer-height;
+}
+
+footer {
+  @extend %text-center;
+  background: $xxix-black;
+  color: $xxix-gray;
+  line-height: $footer-height;
+}
+
+.article {
+  @extend %margin-horizontal-m;
+  @extend %lap-margin-horizontal-xl;
+  @extend %desk-margin-horizontal-auto;
+  max-width: 1024px;
+}
+
+/******************************************************************
+  Modules
+******************************************************************/
+
+.mod-post-list {
+  .post {
+    &:nth-of-type(odd) {
+      .post-link {
+        background: $xxix-light;
+      }
+    }
+
+    .post-link {
+      @extend %padding-vertical-s, %padding-horizontal-xxs;
+      color: $xxix-black;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        background: darken($xxix-light, 10%);
+      }
+    }
+  }
+}
+
+/******************************************************************
+  Page — Index
+******************************************************************/
+
+.page-index {
+  .section-head {
+    background: $xxix-black;
+    color: $xxix-gray;
+    height: 100vh;
+
+    .head {
+      h1 {
+        @extend %uppercase;
+        color: white;
+        margin-top: -75px;
+        position: absolute;
+        top: 50%;
+
+
+        .client {
+          color: $xxix-yellow;
+        }
+      }
+
+      .meta {
+        position: absolute;
+        bottom: $space-xxl;
+      }
+    }
+  }
+
+  .section-body {
+    min-height: 100vh;
+
+    .head {
+      @extend header;
+    }
+
+    .body {
+      @extend %margin-vertical-xl;
+    }
+  }
+}
+
+/******************************************************************
+  Page — Post
+******************************************************************/
+
+.page-post {
+  .section {
+    .head {
+      @extend header;
+    }
+
+    .body {
+      @extend %reading-text, %margin-vertical-xl;
+    }
+  }
+}
