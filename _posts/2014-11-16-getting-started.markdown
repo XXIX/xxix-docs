@@ -15,6 +15,7 @@
 + Start the jekyll server `$ jekyll serve`
 + View the site locally at [http://localhost:4000](http://localhost:4000)
 + Update the site settings in `_config.yml`
++ Replace logo files in `img` (to ensure everything ‘just works’ keep them the same size as the originals)
 + Add/Edit posts as Markdown in the `_posts` folder
 + Commit your changes to the `gh-pages` branch
 + Push the `gh-pages` branch to GitHub
