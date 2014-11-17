@@ -301,7 +301,7 @@ footer {
 
   .logo {
     @include border-box;
-    background: transparent url('/img/logo-160x160.png') no-repeat center center;
+    background: transparent url('../img/logo-160x160.png') no-repeat center center;
     background-size: 80px 80px;
     float: left;
     height: 80px;
@@ -354,7 +354,7 @@ footer {
     .logo {
       @include border-box;
       background-color: $xxix-black;
-      background-image: url('/img/logo-600x600.png');
+      background-image: url('../img/logo-600x600.png');
       background-size: 300px 300px;
       border-right: 1px solid transparentize($xxix-yellow, 0.6);
       float: none;
