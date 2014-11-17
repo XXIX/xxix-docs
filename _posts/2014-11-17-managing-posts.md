@@ -16,7 +16,7 @@ Captions sit out in the right hand side gutter when there’s enough room. To cr
 For example, the following:
 
 <div markdown="1">
-  ![My Image](/img/screenshot.png)
+  ![My Image](img/screenshot.png)
 
 > #### Caption title  
 With some content underneath.
@@ -26,7 +26,7 @@ Can be created by:
 
 {% highlight html %}
 <div markdown="1">
-  ![My Image](/img/screenshot.png)
+  ![My Image](img/screenshot.png)
 
 > #### Caption title  
 With some content underneath.
