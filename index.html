@@ -2,30 +2,58 @@
 layout: default
 ---
 
-<div class="page-index">
-  <div class="section-head">
+<div class="page-nav" id="page-nav">
+  <div class="body">
     <div class="article">
-      <div class="head">
-        <h1><span class="client">{{ site.client }}</span><br>Docs</h1>
-        <p class="meta">Documentation for {{ site.url }}</p>
+      <div class="logo"></div>
+      <div class="nav-toggle" data-toggle-nav="#page-nav"></div>
+      <div class="posts-wrapper" id="#post-wrapper">
+        <ul class="mod-post-list" id="nav">
+          <li class="post current"><a class="post-link" href="#post-0">Introduction</a></li>
+          {% for post in site.posts reversed %}
+            <li class="post"><a class="post-link" href="#post-{{ forloop.index }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% include footer.html %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrapper">
+  <div class="page-introduction" id="post-0">
+    <div class="section" data-vertical-align-parent>
+      <div class="article" data-vertical-align-to="1024">
+        <div class="head">
+          <div class="date">2014</div>
+          <h1><span class="client">{{ site.client }}</span><br>Documentation</h1>
+          <p class="meta">{{ site.description }}</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="section-body" id="docs">
-    <div class="head">
-      <div class="article">
-        <p>Documentation Index</p>
+  {% for post in site.posts reversed %}
+    <div class="page-post" id="post-{{ forloop.index }}">
+      <div class="section">
+        <div class="head">
+          <div class="article">
+            <h1>{{ post.title }}</h1>
+          </div>
+        </div>
+        <div class="body">
+          <div class="article">
+            {{post.content}}
+          </div>
+        </div>
       </div>
     </div>
+  {% endfor %}
 
-    <div class="body">
+  <div class="page-cta">
+    <div class="section">
       <div class="article">
-        <ul class="mod-post-list">
-          {% for post in site.posts reversed %}
-            <li class="post"><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
-          {% endfor %}
-        </ul>
+        <p>Still got questions? Send an email to <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
       </div>
     </div>
   </div>

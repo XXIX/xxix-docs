@@ -20,9 +20,9 @@
   %#{$namespace}letter-xl { letter-spacing: $letter-xl; }
   %#{$namespace}letter-xxl { letter-spacing: $letter-xxl; }
 
-  %#{$namespace}text-light { font: $text-light; }
-  %#{$namespace}text-regular { font: $text-regular; }
-  %#{$namespace}text-bold { font: $text-bold;}
+  %#{$namespace}text-light { font-family: $text-light-family; font-weight: $text-light-weight; }
+  %#{$namespace}text-regular { font-family: $text-regular-family; font-weight: $text-regular-weight; }
+  %#{$namespace}text-bold { font-family: $text-bold-family; font-weight: $text-bold-weight; }
 
   %#{$namespace}text-center { text-align: center; }
   %#{$namespace}text-left { text-align: left; }

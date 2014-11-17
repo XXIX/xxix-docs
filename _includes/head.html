@@ -4,11 +4,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{{ site.client }} Documentation by XXIX</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="author" content="XXIX">
   <meta name="description" content="XXIX Docs">
 
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/modernizr.js"></script>
+
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/respond.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="js/waypoints.min.js"></script>
+  <script type="text/javascript" src="js/jquery.nav.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
 </head>

@@ -7,6 +7,7 @@
         "variables",
         "mixins/background",
         "mixins/media_query",
+        "mixins/bootstrap_grid",
         "mixins/style",
         "helpers/reset",
         "helpers/form",
@@ -24,16 +25,21 @@
 ******************************************************************/
 
 body {
-  @extend %text-regular, %text-s, %line-s;
+  @extend %text-regular, %text-s, %line-s, %letter-xxs;
   color: $color-base;
 }
 
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 a {
-  color: $color-link;
+  color: inherit;
 }
 
 a:hover {
-  color: $color-link-hover;
+  color: inherit;
 }
 
 a:active, a:focus {
@@ -50,22 +56,9 @@ hr {
 }
 
 h1 {
-  @extend %text-l, %text-bold;
-  @extend %lap-text-xl;
-  @extend %desk-text-xxl;
-}
-
-h2 {
-  @extend %text-m, %text-bold;
-  @extend %lap-text-l;
+  @extend %text-l, %text-regular;
   @extend %desk-text-xl;
-}
-
-h3 {
-  font-size: $text-l;
-  @extend %text-s, %text-bold;
-  @extend %lap-text-m;
-  @extend %desk-text-l;
+  @extend %desk-text-xxl;
 }
 
 /******************************************************************
@@ -73,7 +66,7 @@ h3 {
 ******************************************************************/
 
 %reading-text {
-  @extend %text-regular, %text-s, %line-s;
+  @extend %text-regular, %text-s, %line-l;
 
   a {
     color: $color-link;
@@ -94,38 +87,49 @@ h3 {
     background: $color-line;
     border: none;
     display: block;
-    height: $border-s;
+    height: $border-xxs;
   }
 
   h1 {
-    @extend %text-l, %margin-bottom-l, %text-bold;
-    @extend %lap-text-xl;
-    @extend %desk-text-xxl;
+    @extend %text-l, %margin-vertical-l, %text-regular, %line-xs;
+    @extend %desk-text-xxl, %desk-margin-vertical-xl;
   }
 
   h2 {
-    @extend %text-m, %margin-bottom-m, %text-bold;
-    @extend %lap-text-l;
-    @extend %desk-text-xl;
+    @extend %text-s, %text-regular, %margin-vertical-l, %line-xs;
+    @extend %desk-text-m, %desk-margin-top-xl;
   }
 
   h3 {
-    @extend %text-s, %margin-bottom-s, %text-bold;
-    @extend %lap-text-m;
-    @extend %desk-text-l;
+    @extend %text-xs, %text-regular, %margin-vertical-m, %line-xs;
+    @extend %desk-text-s, %desk-margin-top-xl, %desk-margin-bottom-l;
+    text-transform: uppercase;
+  }
+
+  h4 {
+    @extend %text-xxs, %text-bold, %margin-bottom-xxs;
+    @extend %desk-text-xs;
   }
 
   blockquote {
-    border-left: $border-xl solid $color-line;
-    @extend %text-m, %line-m, %padding-left-m;
+    opacity: 0.7;
+
+    p {
+      @extend %text-xxs, %text-regular;
+    }
+  }
+
+  p, li {
+    @extend %text-xxs;
+    @extend %lap-text-xs;
   }
 
   p {
-    @extend %margin-bottom-m;
+    @extend %margin-bottom-m, %desk-margin-bottom-l;
   }
 
   ul, ol {
-    list-style-position: outside;
+    list-style-position: inside;
   }
 
   ol {
@@ -136,6 +140,14 @@ h3 {
     list-style-type: disc;
   }
 }
+
+%reading-column {
+  @extend %margin-horizontal-m;
+  @extend %desk-margin-horizontal-xl;
+  @extend %cinema-margin-horizontal-xxl;
+  max-width: 780px;
+}
+
 
 /******************************************************************
   Site
@@ -168,7 +180,7 @@ header {
 
     span {
       @extend %hide;
-      @extend %lap-inline;
+      @extend %desk-inline;
     }
   }
 }
@@ -188,17 +200,21 @@ footer, .wrapper:after {
 }
 
 footer {
-  @extend %text-center;
-  background: $xxix-black;
-  color: $xxix-gray;
+  @extend %text-xxs;
   line-height: $footer-height;
-}
+  padding-left: 30px;
+  z-index: 100;
+  position: relative;
 
-.article {
-  @extend %margin-horizontal-m;
-  @extend %lap-margin-horizontal-xl;
-  @extend %desk-margin-horizontal-auto;
-  max-width: 1024px;
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
 }
 
 /******************************************************************
@@ -206,66 +222,210 @@ footer {
 ******************************************************************/
 
 .mod-post-list {
+  @extend %text-xs, %text-bold;
   .post {
-    &:nth-of-type(odd) {
-      .post-link {
-        background: $xxix-light;
+    .post-link {
+      @extend %padding-horizontal-m;
+      border-bottom: 1px solid transparentize($xxix-black, 0.9);
+      color: $xxix-black;
+      display: block;
+      height: $post-link-height;
+      line-height: $post-link-height;
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:after {
+        @include border-radius(10px);
+        @include transition(opacity 0.3s ease-in-out);
+        background: $xxix-black;
+        content: "";
+        height: 10px;
+        margin-top: -5px;
+        opacity: 0;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        width: 10px;
       }
     }
 
-    .post-link {
-      @extend %padding-vertical-s, %padding-horizontal-xxs;
-      color: $xxix-black;
-      display: block;
-      text-decoration: none;
 
-      &:hover {
-        background: darken($xxix-light, 10%);
+    &:hover, &.current {
+      .post-link {
+        &:after {
+          opacity: 1.0;
+        }
       }
     }
   }
 }
 
 /******************************************************************
-  Page — Index
+  Page — Wrapper
+******************************************************************/
+.page-wrapper {
+  position: relative;
+
+  @include desk {
+    margin-left: $sidebar-width;
+  }
+}
+
+/******************************************************************
+  Page — Nav
+******************************************************************/
+.page-nav {
+  @include transition(all 0.2s ease-in-out);
+  background: $xxix-black;
+  min-height: $mobile-nav-height;
+  max-height: $mobile-nav-height;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 10;
+
+  &.active {
+    background: $xxix-yellow;
+    min-height: 100%;
+    max-height: 100%;
+
+    .nav-toggle {
+      background: $xxix-black;
+    }
+
+    footer {
+      bottom: 0;
+    }
+  }
+
+  .logo {
+    @include border-box;
+    background: transparent url('/img/logo-160x160.png') no-repeat center center;
+    background-size: 80px 80px;
+    float: left;
+    height: 80px;
+    margin-top: 10px;
+    width: 80px;
+  }
+
+  .nav-toggle {
+    @include transition(all 0.2s ease-in-out);
+    @include border-radius(50px);
+    background: $xxix-yellow;
+    float: right;
+    height: 60px;
+    margin: 20px;
+    width: 60px;
+  }
+
+  &.invert {
+    background: $xxix-yellow;
+
+    .nav-toggle {
+      background: $xxix-black;
+    }
+  }
+
+  .posts-wrapper {
+    padding-top: $mobile-nav-height + 50px;
+
+    .mod-post-list {
+      .post-link  {
+        border-width: 0;
+      }
+    }
+  }
+
+  footer {
+    @include transition(all 0.2s ease-in-out);
+    bottom: -$footer-height;
+    position: absolute;
+  }
+
+  @include desk {
+    background: $xxix-yellow;
+    min-height: 100vh;
+    max-height: inherit;
+    width: $sidebar-width;
+    overflow: scroll;
+    position: fixed;
+
+    .logo {
+      @include border-box;
+      background-color: $xxix-black;
+      background-image: url('/img/logo-600x600.png');
+      background-size: 300px 300px;
+      border-right: 1px solid transparentize($xxix-yellow, 0.6);
+      float: none;
+      height: $sidebar-width;
+      width: $sidebar-width;
+      margin: 0;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    .posts-wrapper {
+      padding-top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+  }
+}
+
+/******************************************************************
+  Page — Introduction
 ******************************************************************/
 
-.page-index {
-  .section-head {
+.page-introduction {
+  .section {
+    @include border-box;
     background: $xxix-black;
-    color: $xxix-gray;
-    height: 100vh;
+    color: white;
+    min-height: 100vh;
 
     .head {
       h1 {
-        @extend %uppercase;
+        @extend %margin-bottom-xl;
         color: white;
-        margin-top: -75px;
-        position: absolute;
-        top: 50%;
-
 
         .client {
           color: $xxix-yellow;
         }
       }
 
-      .meta {
+      .date {
+        @extend %margin-top-xl;
+        display: none;
         position: absolute;
-        bottom: $space-xxl;
+        top: 0;
+      }
+
+      .meta {
+        @extend %line-l;
+        max-width: 360px;
       }
     }
   }
 
-  .section-body {
-    min-height: 100vh;
+  .article {
+    @extend %reading-column;
+  }
 
-    .head {
-      @extend header;
-    }
+  @include desk {
+    .section {
+      padding-top: $sidebar-width + $post-link-height;
+      padding-bottom: $sidebar-width;
 
-    .body {
-      @extend %margin-vertical-xl;
+      .head {
+        .date {
+          display: block;
+        }
+      }
     }
   }
 }
@@ -275,13 +435,55 @@ footer {
 ******************************************************************/
 
 .page-post {
-  .section {
-    .head {
-      @extend header;
+  @include border-box;
+  padding-top: $mobile-nav-height;
+  min-height: 100vh;
+  @extend %reading-text;
+  overflow: hidden;
+
+  .article {
+    @extend %reading-column;
+  }
+
+  &:first-child {
+    padding-top: 0 !important;
+  }
+
+  img {
+    @extend %fluid-img;
+    @extend %margin-bottom-l;
+    @extend %desk-margin-bottom-xl;
+  }
+
+  div {
+    position: relative;
+  }
+
+  @include desk {
+    padding-top: 0;
+  }
+
+  @include from($device-xl) {
+    .section {
+      padding-right: ($gutter-width - 100) !important;
     }
 
-    .body {
-      @extend %reading-text, %margin-vertical-xl;
+    blockquote {
+      position: absolute;
+      right: -($gutter-width) + 30;
+      top: 0;
+      width: ($gutter-width) - 60;
     }
+  }
+}
+
+/******************************************************************
+  Page — CTA
+******************************************************************/
+.page-cta {
+  @extend %reading-text, %margin-top-xxl, %margin-bottom-m;
+
+  .article {
+    @extend %reading-column;
   }
 }

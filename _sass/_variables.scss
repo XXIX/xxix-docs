@@ -10,8 +10,8 @@ $device-xs:                         567px;
 $device-s:                          640px;
 $device-m:                          768px;
 $device-l:                          1024px;
-$device-xl:                         1224px;
-$device-xxl:                        1824px;
+$device-xl:                         1279px;
+$device-xxl:                        1350px;
 
 /* Screen size shortcuts */
 $lap:                               $device-s;
@@ -19,17 +19,16 @@ $desk:                              $device-l;
 $cinema:                            $device-xxl;
 
 /* Layout sizes */
-$page-max-width:                    1024px;
-$footer-height:                     40px;
+$footer-height:                     70px;
 
 /* Spacing */
 $space-xxs:                         5px;
 $space-xs:                          10px;
 $space-s:                           15px;
-$space-m:                           20px;
-$space-l:                           30px;
-$space-xl:                          40px;
-$space-xxl:                         50px;
+$space-m:                           25px;
+$space-l:                           45px;
+$space-xl:                          90px;
+$space-xxl:                         115px;
 
 /* Border Height */
 $border-xxs:                        1px;
@@ -44,12 +43,12 @@ $border-xxl:                        15px;
 $text-xxs:                          12px;
 $text-xs:                           14px;
 $text-s:                            18px;
-$text-m:                            24px;
+$text-m:                            28px;
 $text-l:                            30px;
 $text-xl:                           42px;
-$text-xxl:                          60px;
+$text-xxl:                          72px;
 
-$letter-xxs:                        1px;
+$letter-xxs:                        0.04em;
 $letter-xs:                         2px;
 $letter-s:                          3px;
 $letter-m:                          4px;
@@ -65,9 +64,12 @@ $line-l:                            1.6;
 $line-xl:                           1.8;
 $line-xxl:                          2.0;
 
-$text-light:                        Helmet 700;
-$text-regular:                      Helmet 500;
-$text-bold:                         Helmet 300;
+$text-light-family:                 Helvetica;
+$text-light-weight:                 300;
+$text-regular-family:               Helvetica;
+$text-regular-weight:               400;
+$text-bold-family:                  Helvetica;
+$text-bold-weight:                  700;
 
 /* Colors */
 $color-base:                        #333;
@@ -75,7 +77,7 @@ $color-base:                        #333;
 $color-link:                        rgb(75, 156, 202);
 $color-link-hover:                  #4183c4;
 
-$color-line:                        #ccc;
+$color-line:                        #bcbec0;
 $color-muted:                       #777;
 $color-primary:                     #40b294;
 $color-warning:                     #a94442;
@@ -107,7 +109,12 @@ $form-action-hover-border-color:    $form-action-border-color;
  */
 
 $color-brand:                       red;
-$xxix-black:                        rgb(0, 0, 0);
-$xxix-yellow:                       rgb(254, 252, 65);
+$xxix-black:                        #231f20;
+$xxix-yellow:                       rgb(255, 224, 0);
 $xxix-gray:                         rgb(128, 128, 128);
 $xxix-light:                        rgb(252, 252, 252);
+
+$sidebar-width:                     300px;
+$gutter-width:                      250px;
+$post-link-height:                  70px;
+$mobile-nav-height:                 100px;
