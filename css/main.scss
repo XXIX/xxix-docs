@@ -30,7 +30,6 @@ body {
 }
 
 .no-scroll {
-  height: 100%;
   overflow: hidden;
 }
 
@@ -124,7 +123,7 @@ h1 {
     @extend %lap-text-xs;
   }
 
-  p {
+  p, ul, ol {
     @extend %margin-bottom-m, %desk-margin-bottom-l;
   }
 
@@ -280,6 +279,7 @@ footer {
   background: $xxix-black;
   min-height: $mobile-nav-height;
   max-height: $mobile-nav-height;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   position: fixed;
@@ -290,19 +290,41 @@ footer {
     min-height: 100%;
     max-height: 100%;
 
+    .nav-header {
+      background: $xxix-yellow;
+    }
+
     .nav-toggle {
       background: $xxix-black;
     }
 
-    footer {
-      bottom: 0;
+    .article {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      overflow: scroll;
+      overflow-scrolling: touch;
+      -webkit-overflow-scrolling: touch;
     }
+
+    footer {
+      display: none;
+    }
+  }
+
+  .nav-header {
+    @include transition(all 0.2s ease-in-out);
+    background: $xxix-black;
+    height: $mobile-nav-height;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
   }
 
   .logo {
     @include border-box;
     background: transparent url('../img/logo-160x160.png') no-repeat center center;
-    background-size: 80px 80px;
+    background-size: 60px 60px;
     float: left;
     height: 80px;
     margin-top: 10px;
@@ -322,6 +344,10 @@ footer {
   &.invert {
     background: $xxix-yellow;
 
+    .nav-header {
+      background: $xxix-yellow;
+    }
+
     .nav-toggle {
       background: $xxix-black;
     }
@@ -337,19 +363,22 @@ footer {
     }
   }
 
-  footer {
-    @include transition(all 0.2s ease-in-out);
-    bottom: -$footer-height;
-    position: absolute;
-  }
-
   @include desk {
     background: $xxix-yellow;
-    min-height: 100vh;
+    height: 100vh;
     max-height: inherit;
     width: $sidebar-width;
     overflow: scroll;
+    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
+
     position: fixed;
+
+    .nav-header {
+      background: transparent;
+      height: auto;
+      position: inherit;
+    }
 
     .logo {
       @include border-box;
@@ -367,12 +396,9 @@ footer {
       display: none;
     }
 
-    .posts-wrapper {
+    .article, .body, .posts-wrapper {
       padding-top: 0;
-    }
-
-    footer {
-      bottom: 0;
+      min-height: 100%;
     }
   }
 }
@@ -463,7 +489,7 @@ footer {
     padding-top: 0;
   }
 
-  @include from($device-xl) {
+  @include desk {
     .section {
       padding-right: ($gutter-width - 100) !important;
     }
@@ -481,9 +507,22 @@ footer {
   Page — CTA
 ******************************************************************/
 .page-cta {
-  @extend %reading-text, %margin-top-xxl, %margin-bottom-m;
+  @extend %reading-text, %margin-top-xxl;
+
+  .section {
+    background: $xxix-black;
+    color: white;
+  }
 
   .article {
-    @extend %reading-column;
+    @extend %reading-column, %padding-vertical-m;
+
+    a {
+      color: $xxix-yellow;
+    }
+
+    p {
+      @extend %margin-bottom-n;
+    }
   }
 }

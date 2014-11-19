@@ -4,13 +4,11 @@
 
 disableBodyScroll = ->
   $("body").addClass('no-scroll')
-  $("body").bind "touchmove", (e) ->
-    e.preventDefault()
-    return
+  $(".page-wrapper").addClass('no-scroll')
 
 enableBodyScroll = ->
   $("body").removeClass('no-scroll')
-  $("body").unbind('touchmove')
+  $(".page-wrapper").removeClass('no-scroll')
 
 toggleBodyScroll = ->
   if $('body').hasClass('no-scroll')
