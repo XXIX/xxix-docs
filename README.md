@@ -6,7 +6,7 @@ Template for client docs - [Demo](http://xxix.github.io/xxix-docs/)
 
 ### What you need to know
 
-+ Powered by Jekyll, a static site generator
++ Powered by Jekyll, a static site generator. If you don't have it installed, [get it](http://jekyllrb.com/).
 + Built on top of [Stencil](http://github.com/micdijkstra/stencil) as a base to provide a set of Scss helpers
 + Configured to be hosted on GitHub pages
 
