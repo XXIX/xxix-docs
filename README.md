@@ -36,6 +36,12 @@ Template for client docs - [Demo](http://xxix.github.io/xxix-docs/)
 
 ***
 
+### Images
+
+To add images, simply drop them in `/img` and link to them from your post. Use the format `![alttag](img/filename.png)`.
+
+***
+
 ### Captions
 
 Captions sit out in the right hand side gutter when there’s enough room. To create a caption, you need to wrap the content block in a div and use a block quote.
