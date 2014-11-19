@@ -1,5 +1,5 @@
 # XXIX docs builder
-Template for client docs
+Template for client docs - [Demo](http://xxix.github.io/xxix-docs/)
 
 
 ## A mix of Stencil, Jekyll and GitHub pages
