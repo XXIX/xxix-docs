@@ -124,7 +124,7 @@ h1 {
   }
 
   p, ul, ol {
-    @extend %margin-bottom-m, %desk-margin-bottom-l;
+    @extend %margin-bottom-s, %desk-margin-bottom-m;
   }
 
   ul, ol {
@@ -138,6 +138,14 @@ h1 {
   ul {
     list-style-type: disc;
   }
+
+  code {
+	font-family: monaco, monospace;
+	font-size: 80%;
+	background: $xxix-black;
+	color: white;
+	padding: 5px;
+  }
 }
 
 %reading-column {
@@ -145,6 +153,34 @@ h1 {
   @extend %desk-margin-horizontal-xl;
   @extend %cinema-margin-horizontal-xxl;
   max-width: 780px;
+}
+
+
+/******************************************************************
+  Site
+******************************************************************/
+
+table {
+ @extend %text-xxs;
+ @extend %lap-text-xs;
+
+	thead {
+		border-bottom: $border-xxs solid $color-line;
+		@extend %uppercase;
+	}
+
+	td, th {
+		padding: 15px;
+		border-right: $border-xxs solid lighten( $color-line, 10% );
+
+		&:last-child {
+			border-right: none;
+		}
+	}
+
+	tr {
+		border-bottom: $border-xxs solid lighten( $color-line, 10% );
+	}
 }
 
 
