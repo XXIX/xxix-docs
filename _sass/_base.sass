@@ -1,0 +1,215 @@
+// Base Typography
+
+body
+  color: $color-base
+  +letter(xxs)
+  +line(s)
+  +text-regular
+  +text(s)
+
+.no-scroll
+  overflow: hidden
+
+a
+  color: inherit
+
+a:hover
+  color: inherit
+
+a:active, a:focus
+  outline: 0
+
+hr
+  color: $color-line
+  background: $color-line
+  border: none
+  display: block
+  height: 5px
+  +margin($vertical: xxl)
+
+h1
+  +text(l, $desk: xxl)
+  +text-regular
+
+
+//  Reading Text
+
+%reading-text
+  +line(l)
+  +text-regular
+  +text(s)
+
+  a
+    +link($color-link, $hover: $color-link-hover)
+
+  a:hover
+    text-decoration: underline
+
+  a:active, a:focus
+    outline: 0
+
+  hr
+    color: $color-line
+    background: $color-line
+    border: none
+    display: block
+    height: 1px
+    +margin($vertical: l)
+
+
+  h1
+    +margin($vertical: l)
+    +text(l, $desk: xxl)
+    +text-regular
+    +line(xs)
+
+    +desk
+      +margin($vertical: xl)
+
+  h2
+    +line(xs)
+    +margin($vertical: l)
+    +text(s, $desk: m)
+    +text-regular
+
+    +desk
+      +margin($top: xl)
+
+
+  h3
+    +line(xs)
+    +margin($vertical: m)
+    +text(xs, $desk: s)
+    text-transform: uppercase
+
+    +desk
+      +margin($top: xl, $bottom: l)
+
+
+  h4
+    +text(xxs, $desk: xs)
+    +text-bold
+    +margin($bottom: xxs)
+
+  blockquote
+    opacity: 0.7
+
+    p
+      +text(xxs)
+      +text-regular
+
+  p, li
+    +text(xxs, $lap: xs)
+
+
+  p, ul, ol
+    +margin($bottom: s)
+    +desk
+      +margin($bottom: m)
+
+  ul, ol
+    list-style-position: inside
+
+  ol
+    list-style-type: decimal
+
+  ul
+    list-style-type: disc
+
+
+  code
+    background: $xxix-black
+    color: white
+    font-family: monaco, monospace
+    font-size: 80%
+    padding: 5px
+
+
+%reading-column
+  +margin($horizontal: m)
+  max-width: 780px
+
+  +desk
+    +margin($horizontal: xl)
+
+  +cinema
+    +margin($horizontal: xxl)
+
+//  Table
+
+table
+  +text(xxs, $lap: xs)
+
+  thead
+    border-bottom: 1px solid $color-line
+    +text-uppercase
+
+  td, th
+    padding: 15px
+    border-right: 1px solid lighten( $color-line, 10% )
+
+    &:last-child
+      border-right: none
+
+  tr
+    border-bottom: 1px solid lighten( $color-line, 10% )
+
+
+// Site
+
+html, body
+  height: 100%
+
+header
+  color: $xxix-black
+  background-color: $xxix-yellow
+  +margin($bottom: xl)
+  +padding($vertical: l)
+  +text(s)
+  +text-uppercase
+
+  a
+    color: inherit
+
+  .button
+    border: 1px solid $xxix-gray
+    color: $xxix-gray
+    margin-top: -3px
+    float: right
+    +padding($all: xxs)
+    +text(xs)
+    text-decoration: none
+
+    &:hover
+      opacity: 0.7
+
+    span
+      +is-hidden
+      +desk
+        +inline
+
+.wrapper
+  min-height: 100%
+  margin-bottom: -$footer-height
+
+.wrapper:after
+  content: ""
+  display: block
+
+footer, .wrapper:after
+  height: $footer-height
+
+footer
+  line-height: $footer-height
+  padding-left: 30px
+  position: relative
+  +text(xxs)
+  z-index: 100
+
+  a
+    +link(white, $hover: white)
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+

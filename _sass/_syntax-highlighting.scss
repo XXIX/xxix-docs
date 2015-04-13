@@ -3,13 +3,15 @@
  */
 .highlight {
   @include border-box;
-  @extend %text-xxs, %lap-text-xs;
+  @include text(xxs, $lap: xs);
   background: $xxix-black;
   color: white;
   padding: 25px 40px;
   overflow-x: scroll;
-  @extend %margin-bottom-l;
-  @extend %desk-margin-bottom-xl;
+  @include margin($bottom: l);
+  @include desk {
+    @include margin($bottom: xl);
+  }
 
   .c     { color: #998; font-style: italic } // Comment
   .err   { color: #a61717; background-color: #e3d2d2 } // Error
