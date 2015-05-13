@@ -1,10 +1,10 @@
-# XXIX docs builder
-Template for client docs - [Demo](http://xxix.github.io/xxix-docs/)
+# Ampal docs
+The documentation for The Ampal Creative can be found [here](http://xxix.github.io/ampal-docs).
 
+——
 
-## A mix of Stencil, Jekyll and GitHub pages
-
-### What you need to know
+###### Built on xxix-docs
+[Documentation](https://github.com/XXIX/xxix-docs)
 
 + Powered by Jekyll, a static site generator. If you don't have it installed, [get it](http://jekyllrb.com/).
 + Built on top of [Stencil](http://github.com/micdijkstra/stencil) as a base to provide a set of Scss helpers
