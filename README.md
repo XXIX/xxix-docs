@@ -1,7 +1,7 @@
 # Ampal docs
 The documentation for The Ampal Creative can be found [here](http://xxix.github.io/ampal-docs).
 
-——
+----
 
 ###### Built on xxix-docs
 [Documentation](https://github.com/XXIX/xxix-docs)
